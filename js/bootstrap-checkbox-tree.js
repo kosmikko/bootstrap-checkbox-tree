@@ -133,6 +133,14 @@
       this.collapseEl(this.$element.find("li:has(> ul.hide) > span"));
     },
 
+    checkAll: function() {
+      this.$element.find("input[type='checkbox']").attr('checked', true);
+    },
+
+    uncheckAll: function() {
+      this.$element.find("input[type='checkbox']").attr('checked', false);
+    },
+
     expandEl: function($el) {
       $el.removeClass("collapsed").addClass("expanded").html(this.options.closeHtml);
     },
