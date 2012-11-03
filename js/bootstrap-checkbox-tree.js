@@ -51,11 +51,6 @@
         // Update the tree
         this.expandEl($cb.parent("li").find("> span.collapsed"));
 
-        // Check parents if necessary
-        if (this.options.checkParents) {
-          $cb.parents("li").find("input[type='checkbox']:first").attr('checked', true);
-        }
-
         // Check children if necessary
         if (this.options.checkChildren) {
           $cb.parent("li").find("input[type='checkbox']").attr('checked', true);
@@ -155,7 +150,6 @@
     onBranchExpand: function () {},
     openHtml: '&#9658;', // Html for open icon
     closeHtml: '&#9660;', // close icon
-    checkParents : false, // When checking a box, all parents are checked
     checkChildren : true, // When checking a box, all children are checked
     uncheckChildren : true, // When unchecking a box, all children are unchecked
     initialState : 'default' // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default

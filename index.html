@@ -13,7 +13,6 @@
 
   jQuery(document).ready(function(){
     var cbTree = $('.checkbox-tree').checkboxTree({
-      checkParents : true,
       checkChildren : true
     });
     $('#tree-expand').on('click', function(e){
@@ -133,7 +132,6 @@
         <h2>Usage</h2>
         <pre class='prettyprint'>
           $('.checkbox-tree').checkboxTree({
-            checkParents : true,
             checkChildren : true
           });
         </pre>
