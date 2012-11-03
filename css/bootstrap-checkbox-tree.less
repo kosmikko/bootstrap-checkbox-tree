@@ -1,4 +1,7 @@
 .checkbox-tree {
+  margin-left: 0;
+  padding: 0;
+
   ul {
     padding-left:20px;
   }
@@ -25,9 +28,17 @@
     color:#999;
     cursor:default;
   }
-  span.expanded, span.collapsed {
+  .expanded, .collapsed {
     cursor:pointer;
     float: left;
     margin: 1px 2px 0 0;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+  }
+  .expanded:after {
+    content: '\25BC';
+  }
+  .collapsed:after {
+    content: '\25B6';
   }
 }

@@ -133,11 +133,11 @@
     },
 
     expandEl: function($el) {
-      $el.removeClass("collapsed").addClass("expanded").html(this.options.closeHtml);
+      $el.removeClass("collapsed").addClass("expanded");
     },
 
     collapseEl: function($el) {
-      $el.removeClass("expanded").addClass("collapsed").html(this.options.openHtml);
+      $el.removeClass("expanded").addClass("collapsed");
     }
   };
 
@@ -146,10 +146,6 @@
   };
 
   $.fn.checkboxTree.defaults = {
-    onBranchClose: function () {},
-    onBranchExpand: function () {},
-    openHtml: '&#9658;', // Html for open icon
-    closeHtml: '&#9660;', // close icon
     checkChildren : true, // When checking a box, all children are checked
     uncheckChildren : true, // When unchecking a box, all children are unchecked
     initialState : 'default' // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default
