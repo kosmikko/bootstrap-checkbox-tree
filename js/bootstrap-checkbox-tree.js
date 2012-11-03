@@ -119,10 +119,6 @@
       // Show checked and immediate children of checked
       this.$element.find("li:has(input:checked) > ul").removeClass('hide');
 
-      // Check parents if necessary
-      if (this.options.checkParents) {
-        this.$element.find("input:checked").parents("li").find("input[type='checkbox']:first").attr('checked', true);
-      }
       // Check children if necessary
       if (this.options.checkChildren) {
         this.$element.find("input:checked").parent("li").find("input[type='checkbox']").attr('checked', true);
