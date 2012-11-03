@@ -1,0 +1,16 @@
+.checkbox-tree ul {
+  padding-left:20px;
+}
+.checkbox-tree li {
+  list-style:none;
+}
+.checkbox-tree ul.hide {
+  display:none;
+}
+.checkbox-tree span {
+  color:#999;
+  cursor:default;
+}
+.checkbox-tree span.expanded, .checkbox-tree span.collapsed {
+  cursor:pointer;
+}
