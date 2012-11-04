@@ -74,6 +74,10 @@
           }
         }
       }
+      // trigger a custom event
+      this.$element.trigger({
+        type: "checkboxTicked"
+      });
     },
 
     expandOrCollapseBranch: function(e) {

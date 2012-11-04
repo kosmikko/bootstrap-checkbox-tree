@@ -15,22 +15,25 @@
     var cbTree = $('.checkbox-tree').checkboxTree({
       checkChildren : true
     });
-    $('#tree-expand').on('click', function(e){
+    $('#tree-expand').on('click', function(e) {
       cbTree.expandAll();
     });
-    $('#tree-collapse').on('click', function(e){
+    $('#tree-collapse').on('click', function(e) {
       cbTree.collapseAll();
     });
-    $('#tree-default').on('click', function(e){
+    $('#tree-default').on('click', function(e) {
       cbTree.defaultExpand();
     });
-    $('#tree-select-all').on('click', function(e){
+    $('#tree-select-all').on('click', function(e) {
       cbTree.checkAll();
     });
-    $('#tree-deselect-all').on('click', function(e){
+    $('#tree-deselect-all').on('click', function(e) {
       cbTree.uncheckAll();
     });
-
+    $('.checkbox-tree').on('checkboxTicked', function(e) {
+      var checkedCbs = $(e.currentTarget).find("input[type='checkbox']:checked");
+      console.log('checkbox tick', checkedCbs.length);
+    });
   });
 
   </script>
