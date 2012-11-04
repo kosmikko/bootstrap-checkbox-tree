@@ -44,33 +44,34 @@
 
     checkboxTicked: function(e) {
       var $cb = $(e.currentTarget);
+      var parent = $cb.parent("li");
 
       if ($cb.is(":checked")) {
         // Show immediate children  of checked
-        $cb.parent("li").find("> ul").removeClass('hide');
+        parent.find("> ul").removeClass('hide');
         // Update the tree
-        this.expandEl($cb.parent("li").find("> span.collapsed"));
+        this.expandEl(parent.find("> span.collapsed"));
 
         // Check children if necessary
         if (this.options.checkChildren) {
-          $cb.parent("li").find("input[type='checkbox']").attr('checked', true);
+          parent.find("input[type='checkbox']").attr('checked', true);
           // Show all children of checked
-          $("ul", $cb.parent("li")).removeClass('hide');
-          // Update the tree
-          this.expandEl($("span.collapsed", $cb.parent("li")));
+          parent.find("ul").removeClass('hide');
+
+          // Expand the tree
+          this.expandEl(parent.find("span.collapsed"));
         }
 
       // If unchecking...
       } else {
-
         // Uncheck children if necessary
         if (this.options.uncheckChildren) {
-          $cb.parent("li").find("input[type='checkbox']").attr('checked', false);
+          parent.find("input[type='checkbox']").attr('checked', false);
           // Hide all children
           if(this.options.hideChildrenWhenUnchecking) {
-            $("ul", $cb.parent("li")).addClass('hide');
-            // Update the tree
-            this.collapseEl($("span.expanded", $(this).parent("li")));
+            parent.find("ul").addClass('hide');
+            // Collapse the tree
+            this.collapseEl(parent.find("span.expanded"));
           }
         }
       }
@@ -137,7 +138,13 @@
     },
 
     expandEl: function($el) {
+      if(this.currentlyExpanded && this.options.singleBranchOpen) {
+        // Collapse previously expanded branch
+        this.currentlyExpanded.parent("ul").addClass('hide');
+        this.collapseEl(this.currentlyExpanded);
+      }
       $el.removeClass("collapsed").addClass("expanded");
+      this.currentlyExpanded = $el;
     },
 
     collapseEl: function($el) {
@@ -152,7 +159,8 @@
   $.fn.checkboxTree.defaults = {
     checkChildren : true, // When checking a box, all children are checked
     uncheckChildren : true, // When unchecking a box, all children are unchecked
-    initialState : 'default' // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default
+    initialState : 'default', // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default
+    singleBranchOpen: false // when toggling branches open allow only one branch to be open at once
   };
 
 }(window.jQuery);

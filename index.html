@@ -13,7 +13,8 @@
 
   jQuery(document).ready(function(){
     var cbTree = $('.checkbox-tree').checkboxTree({
-      checkChildren : true
+      checkChildren : true,
+      singleBranchOpen: false
     });
     $('#tree-expand').on('click', function(e) {
       cbTree.expandAll();
