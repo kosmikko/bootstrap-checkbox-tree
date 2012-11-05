@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test Runner</title>
+    <link rel="stylesheet" href="lib/mocha-1.4.2.css" />
+    <script src="lib/mocha.js"></script>
+    <script src="lib/expect-0.1.2.js"></script>
+    <script src="lib/sinon-1.4.2.js"></script>
+    <script src="lib/sinon-expect-d3365d35.js"></script>
+    <script src="test_setup.js"></script>
+
+    <!-- deps -->
+    <script src="lib/jquery-1.8.2.js"></script>
+
+    <!-- source files -->
+    <script src="../js/bootstrap-checkbox-tree.js"></script>
+
+    <!-- test files -->
+    <script src="specs/checkbox-tree.test.js"></script>
+    </head>
+
+  <body>
+    <div id="mocha"></div>
+    <div id="testbed"></div>
+    <div id="main-content" style="display:none;">
+      <ul class="checkbox-tree root">
+        <li>
+          <input type="checkbox" name="branch1" checked="checked" />
+          <ul id="branch1">
+            <li>
+              <input type="checkbox" name="leaf1" value="leaf1"/>
+            </li>
+            <li>
+              <input type="checkbox" name="leaf2" value="leaf2"/>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <input type="checkbox" name="branch2" />
+          <ul id="branch2">
+            <li>
+              <input type="checkbox" name="leaf1" value="branch2_leaf1"/>
+            </li>
+            <li>
+              <input type="checkbox" name="leaf2" value="branch2_leaf2"/>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </body>
+</html>
