@@ -85,6 +85,9 @@
       var $el = $(e.currentTarget);
       // If was previously collapsed...
       if ($el.is(".collapsed")) {
+        if(this.options.singleBranchOpen) {
+          this.collapseAll();
+        }
 
         // ... then expand
         $("> ul", $el.parent("li")).removeClass('hide');
@@ -138,13 +141,7 @@
     },
 
     expandEl: function($el) {
-      if(this.currentlyExpanded && this.options.singleBranchOpen) {
-        // Collapse previously expanded branch
-        this.currentlyExpanded.parent("ul").addClass('hide');
-        this.collapseEl(this.currentlyExpanded);
-      }
       $el.removeClass("collapsed").addClass("expanded");
-      this.currentlyExpanded = $el;
     },
 
     collapseEl: function($el) {
@@ -160,7 +157,8 @@
     checkChildren : true, // When checking a box, all children are checked
     uncheckChildren : true, // When unchecking a box, all children are unchecked
     initialState : 'default', // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default
-    singleBranchOpen: false // when toggling branches open allow only one branch to be open at once
+    singleBranchOpen: false, // when toggling branches open allow only one branch to be open at once (supports only single level of hierarchy)
+    openBrances: null // Array to specify ids of expanded branches
   };
 
 }(window.jQuery);
