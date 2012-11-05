@@ -40,6 +40,10 @@
     initMarkup: function() {
       // Add tree collapse/expand links
       this.$element.find("li").prepend('<span>&nbsp;</span>');
+      // Check children if necessary
+      if (this.options.checkChildren) {
+        this.$element.find("input:checked").parent("li").find("input[type='checkbox']").attr('checked', true);
+      }
     },
 
     checkboxTicked: function(e) {
@@ -119,12 +123,13 @@
     defaultExpand: function() {
       // Hide all except top level
       this.$element.find("ul").addClass('hide');
-      // Show checked and immediate children of checked
-      this.$element.find("li:has(input:checked) > ul").removeClass('hide');
 
-      // Check children if necessary
-      if (this.options.checkChildren) {
-        this.$element.find("input:checked").parent("li").find("input[type='checkbox']").attr('checked', true);
+      if(this.options.openBranches) {
+        var openBranches = this.$element.find(this.options.openBranches.join(','));
+        openBranches.removeClass('hide');
+      } else {
+        // Show checked and immediate children of checked
+        this.$element.find("li:has(input:checked) > ul").removeClass('hide');
       }
 
       // and update the html
@@ -158,7 +163,7 @@
     uncheckChildren : true, // When unchecking a box, all children are unchecked
     initialState : 'default', // Options - 'expand' (fully expanded), 'collapse' (fully collapsed) or default
     singleBranchOpen: false, // when toggling branches open allow only one branch to be open at once (supports only single level of hierarchy)
-    openBrances: null // Array to specify ids of expanded branches
+    openBranches: null // Array to specify selectors of default expanded branches
   };
 
 }(window.jQuery);
