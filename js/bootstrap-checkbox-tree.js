@@ -122,7 +122,7 @@
 
     defaultExpand: function() {
       // Hide all except top level
-      this.$element.find("ul").addClass('hide');
+      this.$element.find("ul:not(.root)").addClass('hide');
 
       if(this.options.openBranches) {
         var openBranches = this.$element.find(this.options.openBranches.join(','));
