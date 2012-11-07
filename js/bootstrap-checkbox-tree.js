@@ -79,6 +79,10 @@
           }
         }
       }
+      this.notifyListeners();
+    },
+
+    notifyListeners: function() {
       // trigger a custom event
       this.$element.trigger({
         type: "checkboxTicked"
@@ -139,10 +143,12 @@
 
     checkAll: function() {
       this.$element.find("input[type='checkbox']").attr('checked', true);
+      this.notifyListeners();
     },
 
     uncheckAll: function() {
       this.$element.find("input[type='checkbox']").attr('checked', false);
+      this.notifyListeners();
     },
 
     expandEl: function($el) {
